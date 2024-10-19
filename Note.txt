@@ -1,0 +1,14 @@
+https://hub.docker.com/_/nginx
+
+https://gist.github.com/KostyaEsmukov/eb09ffc7e26e69dae04e04e4b6320cd4
+
+For wordpress:
+location / {
+    proxy_pass http://103.124.95.232:8080;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $http_host;
+    proxy_redirect off;
+    proxy_set_header X-Forwarded-Host $http_host;  # <== Add
+    proxy_set_header X-Forwarded-Proto $scheme;    # <== Add
+}
